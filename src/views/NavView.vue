@@ -1,18 +1,19 @@
 <template>
   <el-menu class="nav">
-    <el-menu-item index="1" v-on:click="handleClick(666)"> 导航1 </el-menu-item>
-    <el-menu-item index="2"> 导航2 </el-menu-item>
+    <el-menu-item v-for="item in ROUTE_LIST" v-bind:key="item.name" v-on:click="handleClick(item.name)"> {{ item.title }} </el-menu-item>
   </el-menu>
 </template>
 
 <script setup lang="ts">
 import { ElMenu, ElMenuItem } from 'element-plus'
+import { useRouter } from 'vue-router'
+import { ROUTE_LIST } from '@/router/constants'
 const router = useRouter()
-const handleClick = (index: string) => {
+const handleClick = (name: string) => {
   router.push({
-    path: '/home',
+    path: `/${name}`,
     query: {
-      index: index,
+      a: '1',
     },
   })
 }
@@ -23,6 +24,7 @@ const handleClick = (index: string) => {
   width: 100%;
   height: 100%;
   overflow: auto;
+  width: 200px;
   .el-menu-item {
     height: 40px;
   }

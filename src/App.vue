@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import Nav from './views/NavView.vue'
+import NavView from './views/NavView.vue'
 </script>
 
 <template>
   <div class="content">
-    <Nav />
-    <router-view></router-view>
+    <NavView />
+    <div class="main">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -13,7 +15,11 @@ import Nav from './views/NavView.vue'
 .content {
   width: 100%;
   height: 100%;
-  display: grid;
-  grid-template-columns: 200px 1fr;
+  display: flex;
+  background-color: #fff;
+  color: #000;
+  .main {
+    flex: 1;
+  }
 }
 </style>
